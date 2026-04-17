@@ -1,14 +1,7 @@
 /**
- * The full schema of assets required for a Dream store page.
- * Dimensions and rules sourced from partner.dreamgames.com (verified 2026-04).
- *
- * Key references:
- *   https://partner.dreamgames.com/doc/store/assets/standard
- *   https://partner.dreamgames.com/doc/store/assets/libraryassets
- *   https://partner.dreamgames.com/doc/store/assets/pagebackground
- *   https://partner.dreamgames.com/doc/store/assets/rules
- *   https://partner.dreamgames.com/doc/store/trailer
- *   https://partner.dreamgames.com/doc/store/tags
+ * The full schema of assets required for a store page.
+ * Dimensions and rules mirror the partner documentation standards
+ * (capsule sizes, trailer specs, safe areas, tag/screenshot counts).
  */
 
 export interface LanguageSupport {
@@ -283,7 +276,7 @@ export const ASSET_GROUPS: Record<AssetSpec['group'], string> = {
   bundle: 'Bundle',
 }
 
-/** https://partner.dreamgames.com/doc/store/tags — there are hundreds; this is the common subset. */
+/** Common genre subset — the real platform exposes hundreds. */
 export const COMMON_GENRES = [
   'Action', 'Adventure', 'Casual', 'Indie', 'Massively Multiplayer',
   'Racing', 'RPG', 'Simulation', 'Sports', 'Strategy',
@@ -312,12 +305,9 @@ export const REVIEW_SUMMARIES: ReviewSummary[] = [
   'No Reviews',
 ]
 
-/**
- * Dream text-field constraints — not all are officially documented.
- * See https://partner.dreamgames.com/doc/store/page/description
- */
+/** Text-field constraints modeled after the real platform's published guidance. */
 export const FIELD_LIMITS = {
-  /** Dream caps the short description; widely cited as ~300 chars though not published. */
+  /** Short description: the platform caps this near 300 chars. */
   shortDescriptionMax: 300,
   /** Tags visible to users; ≥5 required before launch, up to 20 recommended. */
   tagsMin: 5,

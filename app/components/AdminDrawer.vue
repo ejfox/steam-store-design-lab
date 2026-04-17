@@ -855,52 +855,12 @@ const drawerStyle = computed(() => ({
   align-items: stretch;
 }
 
-.section-header-copy {
-  max-width: 720px;
-}
-
 .section-title {
-  margin: 6px 0 8px;
-  font-size: 34px;
-  line-height: 1.05;
-  color: #fff;
-}
-
-.section-description {
   margin: 0;
-  color: #8f98a0;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.section-facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  min-width: 0;
-}
-
-.fact-card {
-  background: rgba(10, 16, 22, 0.9);
-  border: 1px solid #1f2b38;
-  border-radius: 10px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.fact-label {
-  font-size: 12px;
-  color: #8f98a0;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.fact-value {
-  font-size: 17px;
+  font-size: 24px;
+  line-height: 1.1;
   color: #fff;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .editor-surface {
@@ -1316,11 +1276,6 @@ const drawerStyle = computed(() => ({
     border-right: none;
     border-bottom: 1px solid #111820;
   }
-
-  .section-facts {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    min-width: 0;
-  }
 }
 
 @media (max-width: 840px) {
@@ -1330,18 +1285,9 @@ const drawerStyle = computed(() => ({
     flex-direction: column;
   }
 
-  .drawer-header-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-
   .drawer-content,
   .drawer-sidebar {
     padding: 18px;
-  }
-
-  .section-facts {
-    width: 100%;
   }
 
   .asset-row,

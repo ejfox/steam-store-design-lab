@@ -1,43 +1,14 @@
-/* Dream store design tokens — reverse-engineered from dreampowered.com */
+/* Global design tokens + body defaults.
+ * Individual components mostly hard-code their hexes; these are the
+ * few tokens that cross component boundaries. */
 :root {
-  /* Background layers */
   --dream-bg-root: #1b2838;
-  --dream-bg-header: #171a21;
-  --dream-bg-page-top: #2a475e;
-  --dream-bg-page-bottom: #1b2838;
-  --dream-bg-game: radial-gradient(farthest-side at top center, #2a475e 0%, #1b2838 80%);
-  --dream-bg-panel: rgba(0, 0, 0, 0.2);
-  --dream-bg-panel-solid: #16202d;
-  --dream-bg-capsule: #16202d;
-  --dream-bg-subpanel: rgba(0, 0, 0, 0.4);
-
-  /* Text */
   --dream-text: #c7d5e0;
   --dream-text-dim: #8f98a0;
-  --dream-text-bright: #ffffff;
-  --dream-text-link: #66c0f4;
-  --dream-text-link-hover: #ffffff;
-
-  /* Accent greens (price / buy) */
-  --dream-green-bright: #a4d007;
-  --dream-green-mid: #5ba32b;
-  --dream-green-dark: #4c6b22;
-  --dream-green-text: #beee11;
-
-  /* Blues */
-  --dream-blue-btn-from: #47bfff;
-  --dream-blue-btn-to: #1a44c2;
-
-  /* Reviews */
   --dream-review-positive: #66c0f4;
   --dream-review-mixed: #b9a074;
   --dream-review-negative: #a34c25;
-
-  --dream-tag: rgba(103, 193, 245, 0.2);
-  --dream-tag-text: #67c1f5;
-  --dream-tag-hover: rgba(103, 193, 245, 0.8);
-
-  --font-dream: "Fira Sans", "Motiva Sans", Arial, Helvetica, sans-serif;
+  --font-dream: "Fira Sans", Arial, Helvetica, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -53,21 +24,13 @@ html, body, #__nuxt {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a { color: var(--dream-text-link); text-decoration: none; }
-a:hover { color: var(--dream-text-link-hover); }
+a { color: #66c0f4; text-decoration: none; }
+a:hover { color: #ffffff; }
 
 button { font-family: inherit; }
-
 img { display: block; }
 
-/* Dream's signature "glass" panel shadow */
-.dream-panel {
-  background: var(--dream-bg-panel);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
-}
-
-/* Scrollbar — Dream-ish */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: #171a21; }
-::-webkit-scrollbar-thumb { background: #3c5064; border-radius: 0; }
+::-webkit-scrollbar-thumb { background: #3c5064; }
 ::-webkit-scrollbar-thumb:hover { background: #4c6d8c; }
