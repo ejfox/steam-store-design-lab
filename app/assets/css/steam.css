@@ -1,0 +1,73 @@
+/* Steam store design tokens — reverse-engineered from steampowered.com */
+:root {
+  /* Background layers */
+  --steam-bg-root: #1b2838;
+  --steam-bg-header: #171a21;
+  --steam-bg-page-top: #2a475e;
+  --steam-bg-page-bottom: #1b2838;
+  --steam-bg-game: radial-gradient(farthest-side at top center, #2a475e 0%, #1b2838 80%);
+  --steam-bg-panel: rgba(0, 0, 0, 0.2);
+  --steam-bg-panel-solid: #16202d;
+  --steam-bg-capsule: #16202d;
+  --steam-bg-subpanel: rgba(0, 0, 0, 0.4);
+
+  /* Text */
+  --steam-text: #c7d5e0;
+  --steam-text-dim: #8f98a0;
+  --steam-text-bright: #ffffff;
+  --steam-text-link: #66c0f4;
+  --steam-text-link-hover: #ffffff;
+
+  /* Accent greens (price / buy) */
+  --steam-green-bright: #a4d007;
+  --steam-green-mid: #5ba32b;
+  --steam-green-dark: #4c6b22;
+  --steam-green-text: #beee11;
+
+  /* Blues */
+  --steam-blue-btn-from: #47bfff;
+  --steam-blue-btn-to: #1a44c2;
+
+  /* Reviews */
+  --steam-review-positive: #66c0f4;
+  --steam-review-mixed: #b9a074;
+  --steam-review-negative: #a34c25;
+
+  --steam-tag: rgba(103, 193, 245, 0.2);
+  --steam-tag-text: #67c1f5;
+  --steam-tag-hover: rgba(103, 193, 245, 0.8);
+
+  --font-steam: "Fira Sans", "Motiva Sans", Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #__nuxt {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font-steam);
+  color: var(--steam-text);
+  background: var(--steam-bg-root);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--steam-text-link); text-decoration: none; }
+a:hover { color: var(--steam-text-link-hover); }
+
+button { font-family: inherit; }
+
+img { display: block; }
+
+/* Steam's signature "glass" panel shadow */
+.steam-panel {
+  background: var(--steam-bg-panel);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+/* Scrollbar — Steam-ish */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #171a21; }
+::-webkit-scrollbar-thumb { background: #3c5064; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #4c6d8c; }
