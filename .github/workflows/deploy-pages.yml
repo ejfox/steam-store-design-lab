@@ -37,15 +37,21 @@ jobs:
           NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 
       - name: Package Pages artifact
-        run: tar -C .output/public -czf github-pages.tar.gz .
+        run: |
+          tar \
+            --dereference --hard-dereference \
+            --directory .output/public \
+            -cvf github-pages.tar \
+            .
 
       - name: Upload Pages artifact
         uses: actions/upload-artifact@v6
         with:
           name: github-pages
-          path: github-pages.tar.gz
+          path: github-pages.tar
           if-no-files-found: error
           retention-days: 1
+          compression-level: 0
 
   deploy:
     environment:
