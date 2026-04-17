@@ -84,7 +84,7 @@ const breadcrumb = computed(() => {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--steam-bg-root);
+  background: var(--dream-bg-root);
 }
 .page {
   position: relative;

@@ -291,31 +291,15 @@ onUnmounted(() => {
   if (editTimer) clearTimeout(editTimer)
 })
 
-/* ── Style tokens ────────────────────────────────────────────────
- * Pulled out of the template so every knob lives in one place.
- * Scoped CSS descendant rules under .drawer-root.open silently fail
- * to cascade in this project, and CSS transitions on transform /
- * background-color freeze the computed value — so state-driven
- * styles are applied inline with no transition.
- */
-const TOKENS = {
-  backdropColor: 'rgba(4, 8, 12, 0.72)',
-  backdropBlur: '4px',
-} as const
-
+/* Drawer occupies the full viewport, so no backdrop is needed.
+ * State-driven styles are applied inline because scoped CSS
+ * descendant rules under .drawer-root.open silently fail to cascade. */
 const drawerRootStyle = computed(() => ({
   pointerEvents: open.value ? 'auto' : 'none',
 }))
 
 const drawerStyle = computed(() => ({
   transform: open.value ? 'translateX(0)' : 'translateX(100%)',
-}))
-
-const backdropStyle = computed(() => ({
-  backgroundColor: open.value ? TOKENS.backdropColor : 'transparent',
-  backdropFilter: open.value ? `blur(${TOKENS.backdropBlur})` : 'blur(0)',
-  WebkitBackdropFilter: open.value ? `blur(${TOKENS.backdropBlur})` : 'blur(0)',
-  pointerEvents: open.value ? 'auto' : 'none',
 }))
 </script>
 
@@ -520,7 +504,7 @@ const backdropStyle = computed(() => ({
                     <input v-model="newTag" placeholder="Add tag and press Enter" @keydown.enter.prevent="addTag" />
                     <button class="btn ghost" @click="addTag">Add tag</button>
                   </div>
-                  <div class="field-help">Three or more strong tags makes the page feel much closer to a real Steam listing.</div>
+                  <div class="field-help">Three or more strong tags makes the page feel much closer to a real Dream listing.</div>
                 </div>
 
                 <div class="surface-card form">
@@ -691,7 +675,6 @@ const backdropStyle = computed(() => ({
         </div>
       </div>
     </aside>
-    <div class="drawer-backdrop" :style="backdropStyle" @click="open = false" />
   </div>
 </template>
 
@@ -701,11 +684,6 @@ const backdropStyle = computed(() => ({
   position: fixed;
   inset: 0;
   z-index: 1000;
-}
-
-.drawer-backdrop {
-  position: absolute;
-  inset: 0;
 }
 
 .drawer {
@@ -727,56 +705,43 @@ const backdropStyle = computed(() => ({
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 22px;
-  background: linear-gradient(180deg, #171a21, #101822);
-  border-bottom: 1px solid #000;
+  padding: 18px 28px;
+  background: #0a1118;
+  border-bottom: 1px solid #111820;
 }
 
-.drawer-header-copy {
+.header-left {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  min-width: 0;
 }
 
 .drawer-title {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #67c1f5;
-}
-
-.drawer-subtitle {
-  font-size: 22px;
+  font-size: 16px;
   color: #fff;
-  line-height: 1.1;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.drawer-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.autosave-pill {
-  padding: 9px 12px;
-  border-radius: 999px;
-  background: rgba(117, 176, 34, 0.12);
-  border: 1px solid rgba(117, 176, 34, 0.35);
-  color: #beee11;
+.drawer-caption {
   font-size: 12px;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
+  color: #556772;
+  font-variant-numeric: tabular-nums;
 }
 
 .close-btn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid #223242;
-  color: #c7d5e0;
+  background: transparent;
+  border: 1px solid #1f2b38;
+  color: #8f98a0;
   cursor: pointer;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: color 0.12s, border-color 0.12s;
 }
 
 .close-btn:hover {
@@ -791,144 +756,53 @@ const backdropStyle = computed(() => ({
 
 .drawer-shell {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: 200px minmax(0, 1fr);
   min-height: 100%;
 }
 
 .drawer-sidebar {
-  padding: 24px;
-  background: linear-gradient(180deg, #0d151e, #0a1118);
+  padding: 20px 12px;
+  background: #0a1118;
   border-right: 1px solid #111820;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
-.sidebar-card {
-  background: rgba(16, 24, 34, 0.95);
-  border: 1px solid #1f2b38;
-  border-radius: 12px;
-  padding: 16px;
-}
-
-.sidebar-kicker,
-.section-kicker,
 .field-label,
 .card-title {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.sidebar-kicker,
-.section-kicker,
-.field-label {
   color: #67c1f5;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.project-progress-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: flex-end;
-}
-
-.project-progress-value {
-  font-size: 36px;
-  color: #fff;
-  line-height: 1;
-}
-
-.project-progress-label {
-  font-size: 13px;
-  color: #8f98a0;
-}
-
-.project-progress-meta {
-  font-size: 13px;
-  color: #8f98a0;
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.project-progress-bar {
-  height: 8px;
-  background: #060a0f;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.project-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #75b022, #beee11);
-}
-
-.project-meta-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 13px;
-  color: #8f98a0;
-}
-
-.project-meta-row strong {
-  color: #c7d5e0;
-  font-weight: 600;
-  text-align: right;
 }
 
 .section-nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 1px;
 }
 
 .section-nav-btn {
   width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #223242;
-  background: rgba(11, 18, 24, 0.96);
-  color: inherit;
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: #8f98a0;
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.15s, transform 0.15s, background 0.15s;
+  font-size: 13px;
+  font-family: inherit;
+  transition: color 0.12s, background 0.12s;
 }
 
 .section-nav-btn:hover {
-  border-color: #67c1f5;
-  background: rgba(17, 28, 38, 0.98);
+  color: #c7d5e0;
+  background: rgba(103, 193, 245, 0.04);
 }
 
 .section-nav-btn.active {
-  border-color: #67c1f5;
-  background: linear-gradient(180deg, rgba(30, 62, 82, 0.95), rgba(11, 18, 24, 0.98));
-  box-shadow: inset 0 0 0 1px rgba(103, 193, 245, 0.15);
-}
-
-.section-nav-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.section-nav-label {
   color: #fff;
-  font-size: 14px;
-}
-
-.section-nav-desc {
-  color: #8f98a0;
-  font-size: 12px;
-  line-height: 1.45;
+  background: rgba(103, 193, 245, 0.08);
+  box-shadow: inset 2px 0 0 #67c1f5;
 }
 
 .drawer-content {

@@ -3,14 +3,14 @@ import { useProject } from '~/composables/useProject'
 
 const { state } = useProject()
 
-/** Fabricated URL path that resembles what the real Steam client shows. */
+/** Fabricated URL path that resembles what the real Dream client shows. */
 const fakeUrl = computed(() => {
   const slug = state.value.title
     .replace(/[^\w\s-]/g, '')
     .trim()
     .replace(/\s+/g, '_')
     .replace(/^$/, 'Untitled')
-  return `https://store.steampowered.com/app/1172620/${slug}/`
+  return `https://store.dreampowered.com/app/1172620/${slug}/`
 })
 </script>
 

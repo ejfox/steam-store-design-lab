@@ -6,11 +6,11 @@ export default defineNuxtConfig({
   experimental: {
     payloadExtraction: 'client',
   },
-  css: ['~/assets/css/steam.css'],
+  css: ['~/assets/css/dream.css'],
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
-      title: 'Steam Store Design Lab',
+      title: 'Dream Store Design Lab',
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },

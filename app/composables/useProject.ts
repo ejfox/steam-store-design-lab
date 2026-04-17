@@ -1,6 +1,6 @@
 import { defaultProject, type ProjectState } from '~/utils/schema'
 
-const STORAGE_KEY = 'steam-lab:project:v1'
+const STORAGE_KEY = 'dream-lab:project:v1'
 
 /**
  * Shared reactive project state, persisted to localStorage.

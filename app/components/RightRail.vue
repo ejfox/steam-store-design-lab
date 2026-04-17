@@ -7,10 +7,10 @@ const capsuleUrl = useAssetUrl(() => state.value.assetKeys.headerCapsule)
 
 const reviewColor = computed(() => {
   const s = state.value.reviews.summary
-  if (s.includes('Negative')) return 'var(--steam-review-negative)'
-  if (s === 'Mixed') return 'var(--steam-review-mixed)'
-  if (s === 'No Reviews') return 'var(--steam-text-dim)'
-  return 'var(--steam-review-positive)'
+  if (s.includes('Negative')) return 'var(--dream-review-negative)'
+  if (s === 'Mixed') return 'var(--dream-review-mixed)'
+  if (s === 'No Reviews') return 'var(--dream-text-dim)'
+  return 'var(--dream-review-positive)'
 })
 
 const formattedReviewCount = computed(() =>

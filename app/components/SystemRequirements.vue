@@ -9,7 +9,7 @@ const osTabs = computed(() => {
   const req = state.value.systemRequirements
   if (req.windowsMin || req.windowsRec) out.push({ key: 'windows', label: 'Windows', min: req.windowsMin, rec: req.windowsRec })
   if (req.macMin || req.macRec) out.push({ key: 'mac', label: 'macOS', min: req.macMin, rec: req.macRec })
-  if (req.linuxMin || req.linuxRec) out.push({ key: 'linux', label: 'SteamOS + Linux', min: req.linuxMin, rec: req.linuxRec })
+  if (req.linuxMin || req.linuxRec) out.push({ key: 'linux', label: 'DreamOS + Linux', min: req.linuxMin, rec: req.linuxRec })
   return out
 })
 

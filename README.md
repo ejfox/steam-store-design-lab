@@ -1,6 +1,6 @@
-# Steam Store Design Lab
+# Dream Store Design Lab
 
-A Nuxt-based Steam page preview tool for mocking store art, copy, media, pricing, reviews, system requirements, and editing flows.
+A Nuxt-based Dream page preview tool for mocking store art, copy, media, pricing, reviews, system requirements, and editing flows.
 
 ## License
 
@@ -45,10 +45,10 @@ What is already wired:
 - `.nojekyll` support so `_nuxt/` assets are served correctly
 - deploy on pushes to `main`
 
-Expected public URL for a project repo named `steam-store-design-lab` under the `ejfox` account:
+Expected public URL for a project repo named `dream-store-design-lab` under the `ejfox` account:
 
 ```text
-https://ejfox.github.io/steam-store-design-lab/
+https://ejfox.github.io/dream-store-design-lab/
 ```
 
 If you rename the repository, the deploy workflow will still build correctly because it derives the Pages base path from the repo name.

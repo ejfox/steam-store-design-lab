@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/** Steam-client footer bar — purely cosmetic. */
+/** Dream-client footer bar — purely cosmetic. */
 </script>
 
 <template>
